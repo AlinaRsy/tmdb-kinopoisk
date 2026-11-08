@@ -1,0 +1,9 @@
+allowBuilds:
+  '@swc/core': true
+  esbuild: true
+minimumReleaseAgeExclude:
+  - '@swc/core-darwin-x64@1.16.22'
+  - '@swc/core-linux-arm64-musl@1.16.22'
+  - '@swc/core-linux-s390x-gnu@1.16.22'
+  - '@swc/core-linux-x64-musl@1.16.22'
+  - '@swc/core-win32-ia32-msvc@1.16.22'

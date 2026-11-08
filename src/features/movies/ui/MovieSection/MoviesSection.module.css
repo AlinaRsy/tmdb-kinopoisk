@@ -1,0 +1,89 @@
+.section {
+  margin-bottom: 48px; /* Отступ между разными категориями фильмов */
+}
+
+/* Шапка секции: заголовок слева, ссылка справа */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; /* Выравниваем по базовой линии текста */
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 28px); /* Плавно меняет размер на разных экранах */
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: -0.01em;
+}
+
+/* Стили для ссылки "Посмотреть все" */
+.header a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap; /* Чтобы текст ссылки не ломался на две строки */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.header a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+  transform: translateX(2px); /* Легкий сдвиг вправо при наведении */
+}
+
+/* Сетка карточек (Адаптивная) */
+.grid {
+  display: grid;
+  /* Ровно 6 колонок на всю ширину контейнера */
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px; /* Чуть уменьшили отступ, чтобы карточки точно помещались */
+}
+
+/* ===== АДАПТИВ ДЛЯ МОБИЛЬНЫХ ===== */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки на планшетах */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .grid {
+    /* На планшетах и телефонах карточки делаем чуть меньше (160px) */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+}
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки на смартфонах */
+    gap: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .header {
+    align-items: center;
+  }
+  
+  .header h2 {
+    font-size: 20px;
+  }
+
+  .header a {
+    font-size: 13px;
+  }
+
+  .grid {
+    /* На узких экранах — минимум 140px, чтобы влезало хотя бы 2 колонки */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+}
