@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/common/hooks";
 import { IMG_BASE } from "@/common/constants";
 import s from "./MovieCard.module.css";
 import { Movie } from "../../api/moviesApi.types";
+import { Path } from "@/common/routing";
 
 type Props = {
   movie: Movie;
@@ -29,7 +30,7 @@ export const MovieCard = ({ movie }: Props) => {
 
   return (
     <article className={s.card}>
-      <Link to={"/"} className={s.link}>
+      <Link to={`${Path.CategoryMovies}`} className={s.link}>
         <div className={s.posterWrapper}>
           {movie.poster_path ? (
             <img

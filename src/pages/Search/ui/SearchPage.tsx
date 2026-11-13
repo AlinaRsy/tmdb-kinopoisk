@@ -1,38 +1,33 @@
-import { useSearchMoviesQuery } from '@/features/movies/api/moviesApi';
-import { SearchInput } from '@/features/movies/ui/SearchInput/SearchInput';
-import { useSearchParams } from 'react-router';
-
+import { useSearchMoviesQuery } from "@/features/movies/api/moviesApi";
+import { MovieGrid } from "@/features/movies/ui/MovieGrid/MovieGrid";
+import { SearchInput } from "@/features/movies/ui/SearchInput/SearchInput";
+import { useSearchParams } from "react-router";
+import s from "./SearchPage.module.css";
 export const SearchPage = () => {
   const [searchParams] = useSearchParams();
-  
-  const searchQuery = searchParams.get('query') || '';
+
+  const searchQuery = searchParams.get("query") || "";
 
   const { data, isLoading, isError } = useSearchMoviesQuery(
     { query: searchQuery },
-    { skip: !searchQuery }
+    { skip: !searchQuery },
   );
   return (
-    <div>
-      <h1>Результаты поиска</h1>
-      
-      <SearchInput />
+    <section className="container" style={{width:"100%"}}>
+      <div className={s.search__container}>
+        <h2>Search Results</h2>
 
-      {searchQuery && <p>Поиск по запросу: "{searchQuery}"</p>}
+        <SearchInput />
 
-      {isLoading && <p>Загрузка...</p>}
-      {isError && <p>Произошла ошибка</p>}
+        {searchQuery && <p>Поиск по запросу: "{searchQuery}"</p>}
 
-      {data?.results && (
-        <div className="movies-grid">
-          {data.results.map((movie) => (
-            <div key={movie.id}>
-              <h3>{movie.title}</h3>
-            </div>
-          ))}
-        </div>
-      )}
+        {isLoading && <p>Загрузка...</p>}
+        {isError && <p>Произошла ошибка</p>}
 
-      {data?.results?.length === 0 && <p>Ничего не найдено</p>}
-    </div>
+        {data?.results && <MovieGrid movies={data.results} />}
+
+        {data?.results?.length === 0 && <p>Ничего не найдено</p>}
+      </div>
+    </section>
   );
 };

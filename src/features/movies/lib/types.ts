@@ -1,0 +1,1 @@
+export type Categories = 'popular' | "topRated" | "upcoming" | "nowPlaying"

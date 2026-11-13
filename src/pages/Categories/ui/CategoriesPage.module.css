@@ -1,0 +1,40 @@
+.categories {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+.tab {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid var(--border-color);
+}
+
+.tab:hover {
+  border-color: var(--primary-color);
+  opacity: 0.9;
+}
+
+.activeTab {
+  background-color: var(--primary-color);
+  color: #ffffff; 
+  border-color: var(--primary-color);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text-color);
+}
+
+.categories__container{
+  margin-bottom: 24px;
+}

@@ -1,5 +1,6 @@
 import { baseApi } from "@/app/baseApi";
 import { MoviesResponse, SearchMoviesParams } from "./moviesApi.types";
+import { Categories } from "../lib";
 
 export const moviesApi = baseApi.injectEndpoints({
   endpoints: (builder) => {
@@ -16,6 +17,13 @@ export const moviesApi = baseApi.injectEndpoints({
       getNowPlayingMovies: builder.query<MoviesResponse, void>({
         query: ()=>'/movie/now_playing'
       }),
+      getMoviesByCategory: builder.query<MoviesResponse, {category: Categories, page: number}>({
+        query: ({category, page})=>({
+          method: "get",
+          url: `/movie/${category}`,
+          params: {page}
+        })
+      }),
       searchMovies: builder.query<MoviesResponse, SearchMoviesParams>({
         query: (params)=>({
           method: 'get',
@@ -27,4 +35,4 @@ export const moviesApi = baseApi.injectEndpoints({
   },
 });
 
-export const { useGetPopularMoviesQuery, useGetNowPlayingMoviesQuery, useGetTopRatedMoviesQuery, useGetUpcomingMoviesQuery, useSearchMoviesQuery } = moviesApi;
+export const { useGetPopularMoviesQuery, useGetNowPlayingMoviesQuery, useGetTopRatedMoviesQuery, useGetUpcomingMoviesQuery, useGetMoviesByCategoryQuery, useSearchMoviesQuery } = moviesApi;

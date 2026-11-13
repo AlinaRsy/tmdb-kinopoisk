@@ -1,0 +1,32 @@
+.grid {
+  display: grid;
+  /* Ровно 6 колонок на всю ширину контейнера */
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px; /* Чуть уменьшили отступ, чтобы карточки точно помещались */
+}
+
+/* ===== АДАПТИВ ДЛЯ МОБИЛЬНЫХ ===== */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки на планшетах */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .grid {
+    /* На планшетах и телефонах карточки делаем чуть меньше (160px) */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+}
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки на смартфонах */
+    gap: 12px;
+  }
+}
