@@ -33,7 +33,18 @@ export const searchMoviesParamsSchema = z.object({
   year: z.string().optional(),
 });
 
+export const discoverMoviesParamsSchema = z.object({
+page: z.number().optional(),
+  sort_by: z.string().optional(),
+  "vote_average.gte": z.number().optional(),
+  "vote_average.lte": z.number().optional(),
+  with_genres: z.string().optional(),
+})
 
 export type Movie = z.infer<typeof movieSchema>
 export type MoviesResponse = z.infer<typeof moviesResponseSchema>
 export type SearchMoviesParams = z.infer<typeof searchMoviesParamsSchema>;
+export type DiscoverMoviesParams = z.infer<typeof discoverMoviesParamsSchema>;
+export type GenresResponse = {
+  genres: { id: number; name: string }[];
+};

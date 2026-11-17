@@ -15,7 +15,7 @@ export const CategoriesPage = () => {
   const { data, isLoading } = useGetMoviesByCategoryQuery({ category, page });
 
   const currentCategory =
-    MOVIE_CATEGORIES.find((c) => c.key === category)?.label || "Popular Movies";
+    MOVIE_CATEGORIES.find((c) => c.key === category)?.label || "Select category" ;
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage);

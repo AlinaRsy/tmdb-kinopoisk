@@ -44,30 +44,7 @@ export const MainPage = () => {
             />
           );
         })}
-        {/* <MovieSection
-          title="Popular Movies"
-          category="popular"
-          movies={popular?.results.slice(0, 6)}
-          isLoading={popLoading}
-        />
-        <MovieSection
-          title="Top Rated Movies"
-          category="topRated"
-          movies={topRated?.results.slice(0, 6)}
-          isLoading={popLoading}
-        />
-        <MovieSection
-          title="Upcoming Movies"
-          category="upcoming"
-          movies={upcoming?.results.slice(0, 6)}
-          isLoading={popLoading}
-        />
-        <MovieSection
-          title="Now Playing Movies"
-          category="nowPlaying"
-          movies={nowPlaying?.results.slice(0, 6)}
-          isLoading={popLoading}
-        /> */}
+       
       </div>
     </>
   );

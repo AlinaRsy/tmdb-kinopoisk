@@ -1,21 +1,18 @@
-import { Link } from "react-router";
-import { useAppDispatch, useAppSelector } from "@/common/hooks";
 import { IMG_BASE } from "@/common/constants";
-import s from "./MovieCard.module.css";
-import { Movie } from "../../api/moviesApi.types";
+import { useAppDispatch, useAppSelector } from "@/common/hooks";
 import { Path } from "@/common/routing";
+import { selectIsFavorite, toggleFavorites } from "@/features/favorites/model/favoritesSlice";
+import { Link } from "react-router";
+import { Movie } from "../../api/moviesApi.types";
+import s from "./MovieCard.module.css";
 
 type Props = {
   movie: Movie;
 };
 
 export const MovieCard = ({ movie }: Props) => {
-  // const dispatch = useAppDispatch();
-  // const isFavorite = useAppSelector((state) =>
-  //   state.favorites.ids.includes(movie.id)
-  // );
-
-  // функция для цвета рейтинга
+  const dispatch = useAppDispatch()
+  const isFavorite = useAppSelector((state)=>selectIsFavorite(state, movie.id))
   const getRatingClass = (rating: number) => {
     if (rating >= 7) return s.ratingGreen;
     if (rating >= 5) return s.ratingYellow;
@@ -25,7 +22,7 @@ export const MovieCard = ({ movie }: Props) => {
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    // dispatch(toggleFavorite(movie.id));
+    dispatch(toggleFavorites(movie))
   };
 
   return (
@@ -49,14 +46,10 @@ export const MovieCard = ({ movie }: Props) => {
           </div>
 
           <button
-            // className={`${s.favoriteBtn} ${isFavorite ? s.isFavorite : ""}`}
-            className={`${s.favoriteBtn}`}
+            className={`${s.favoriteBtn} ${isFavorite ? s.isFavorite : ""}`}
             onClick={handleFavoriteClick}
-            // aria-label={isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
-            // title={isFavorite ? "В избранном" : "В избранное"}
           >
-            {/* {isFavorite ? "❤️" : "🤍"} */}
-            {"🤍"}
+            {isFavorite ? "❤️" : "🤍"}
           </button>
         </div>
 
