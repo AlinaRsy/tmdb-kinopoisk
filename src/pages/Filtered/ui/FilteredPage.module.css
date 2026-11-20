@@ -43,7 +43,7 @@
   border-radius: 8px;
   border: 1px solid var(--border-color, #333);
   background-color: var(--input-bg, #2a2a32);
-  color: var(--text-color, #fff);
+  color: #fff;
   font-size: 14px;
   outline: none;
   cursor: pointer;

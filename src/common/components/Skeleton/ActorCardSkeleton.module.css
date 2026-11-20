@@ -1,0 +1,22 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.avatarWrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

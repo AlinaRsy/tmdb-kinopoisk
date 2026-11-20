@@ -1,4 +1,4 @@
-import { Path } from "@/common/routing";
+import { Path } from "@/common/routing/paths";
 import { ThemeToggle } from "@/features/theme-toggle/ui/ThemeToggle";
 import { Link, NavLink, useLocation } from "react-router";
 import logo from "../../../assets/images/logo.svg";

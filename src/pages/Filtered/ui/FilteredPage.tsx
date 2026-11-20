@@ -17,6 +17,7 @@ import {
 import { MovieGrid } from "@/features/movies/ui/MovieGrid/MovieGrid";
 import { ChangeEvent, FormEvent, useEffect } from "react";
 import s from "./FilteredPage.module.css";
+import { MoviesGridSkeleton } from "@/common/components/Skeleton/MovieCardSkeleton";
 export const FilteredPage = () => {
   const dispatch = useAppDispatch();
   const {
@@ -172,7 +173,7 @@ export const FilteredPage = () => {
             </form>
           </aside>
           <div className={s.movies__catalog}>
-            {isLoading && <p>Loading movies...</p>}
+            {isLoading && <MoviesGridSkeleton count={12}/>}
             {data?.results && data.results.length > 0 && (
               <>
                 <MovieGrid movies={data.results} />

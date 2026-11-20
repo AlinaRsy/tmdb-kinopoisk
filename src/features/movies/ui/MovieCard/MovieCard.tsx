@@ -1,6 +1,5 @@
 import { IMG_BASE } from "@/common/constants";
 import { useAppDispatch, useAppSelector } from "@/common/hooks";
-import { Path } from "@/common/routing";
 import { selectIsFavorite, toggleFavorites } from "@/features/favorites/model/favoritesSlice";
 import { Link } from "react-router";
 import { Movie } from "../../api/moviesApi.types";
@@ -27,7 +26,7 @@ export const MovieCard = ({ movie }: Props) => {
 
   return (
     <article className={s.card}>
-      <Link to={`${Path.CategoryMovies}`} className={s.link}>
+      <Link to={`/movie/${movie.id}`} className={s.link}>
         <div className={s.posterWrapper}>
           {movie.poster_path ? (
             <img

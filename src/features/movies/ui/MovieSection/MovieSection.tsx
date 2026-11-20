@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import s from "./MoviesSection.module.css";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { Categories } from "../../lib";
+import { MoviesGridSkeleton } from "@/common/components/Skeleton/MovieCardSkeleton";
 type Props = {
   title: string;
   category: Categories;
@@ -19,10 +20,13 @@ export const MovieSection = ({ title, category, movies, isLoading }: Props) => {
           View More →
         </Link>
       </div>
-
-      <div className={s.grid}>
-        {movies?.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
-      </div>
+      {isLoading ? (
+        <MoviesGridSkeleton />
+      ) : (
+        <div className={s.grid}>
+          {movies?.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+        </div>
+      )}
     </section>
   );
 };

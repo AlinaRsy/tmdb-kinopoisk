@@ -1,15 +1,15 @@
-/* Контейнер поиска */
 .form {
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 560px;
-  
-  background-color: var(--bg-color); 
+  box-sizing: border-box;
+
+  background-color: var(--bg-color);
   border-radius: 16px;
   padding: 6px;
-  gap: 0; 
-  
+  gap: 6px;
+
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
@@ -22,9 +22,10 @@
 
 .input {
   flex: 1;
+  min-width: 0; /* Ключевое свойство, чтобы input мог сжиматься во flex-контейнере */
   padding: 8px 12px;
   font-size: 16px;
-  
+
   border: none;
   background: transparent;
   color: var(--text-color);
@@ -42,17 +43,18 @@
 }
 
 .button {
+  flex-shrink: 0; /* Кнопка не сплющится в узкую полоску */
   padding: 10px 24px;
   font-size: 16px;
   font-weight: 600;
   border: none;
-  border-radius: 12px; 
+  border-radius: 12px;
   background-color: var(--primary-color);
   color: #fff;
   cursor: pointer;
-  
+  white-space: nowrap;
+
   transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-  
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -65,8 +67,28 @@
   transform: scale(0.96);
   box-shadow: none;
 }
+
 .button:disabled {
-  opacity: 0.5;                 
-  cursor: not-allowed;      
-  box-shadow: none;            
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 480px) {
+  .form {
+    padding: 4px;
+    border-radius: 12px;
+  }
+
+  .input {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .button {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
 }

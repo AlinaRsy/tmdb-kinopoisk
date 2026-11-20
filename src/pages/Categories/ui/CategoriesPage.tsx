@@ -6,6 +6,7 @@ import { useGetMoviesByCategoryQuery } from "@/features/movies/api/moviesApi";
 import { Categories } from "@/features/movies/lib";
 import { useEffect, useState } from "react";
 import { Pagination } from "@/common/components";
+import { MoviesGridSkeleton } from "@/common/components/Skeleton/MovieCardSkeleton";
 export const CategoriesPage = () => {
   const { category = "popular" } = useParams<{ category: Categories }>();
   const [page, setPage] = useState(1);
@@ -15,7 +16,8 @@ export const CategoriesPage = () => {
   const { data, isLoading } = useGetMoviesByCategoryQuery({ category, page });
 
   const currentCategory =
-    MOVIE_CATEGORIES.find((c) => c.key === category)?.label || "Select category" ;
+    MOVIE_CATEGORIES.find((c) => c.key === category)?.label ||
+    "Select category";
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
@@ -37,13 +39,19 @@ export const CategoriesPage = () => {
           ))}
         </div>
         <h2 className={s.title}>{currentCategory}</h2>
-        {data && <MovieGrid movies={data.results} />}
-        {data && (
-          <Pagination
-            currentPage={page}
-            totalPages={data.total_pages}
-            onPageChange={handlePageChange}
-          />
+        {isLoading ? (
+          <MoviesGridSkeleton count={12} />
+        ) : (
+          data && (
+            <>
+              <MovieGrid movies={data.results} />
+              <Pagination
+                currentPage={page}
+                totalPages={data.total_pages}
+                onPageChange={handlePageChange}
+              />
+            </>
+          )
         )}
       </div>
     </section>

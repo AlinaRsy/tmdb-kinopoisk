@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import { IMG_BASE } from "@/common/constants";
 
 export const Hero = () => {
-  const {data} = useGetPopularMoviesQuery();
+  const {data, isLoading} = useGetPopularMoviesQuery();
 
   const randomMovie = useMemo(()=>{
     const withBackdrop  = data?.results.filter((movie)=>movie.backdrop_path) ?? null;

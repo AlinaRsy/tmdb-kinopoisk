@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router";
 import s from "./SearchPage.module.css";
 import { Pagination } from "@/common/components";
 import { useEffect, useState } from "react";
+import { MoviesGridSkeleton } from "@/common/components/Skeleton/MovieCardSkeleton";
 export const SearchPage = () => {
   const [page, setPage] = useState(1);
 
@@ -15,7 +16,7 @@ export const SearchPage = () => {
     setPage(1)
   }, [searchQuery]);
 
-  const { data, isLoading, isError } = useSearchMoviesQuery(
+  const { data, isLoading } = useSearchMoviesQuery(
     { query: searchQuery, page: page },
     { skip: !searchQuery },
   );
@@ -36,8 +37,7 @@ export const SearchPage = () => {
 
         {hasQuery ? <p>Results for: "{searchQuery}"</p> : <p>Enter a movie title to start searching</p>}
 
-        {isLoading && <p>Загрузка...</p>}
-        {isError && <p>Error</p>}
+        {isLoading && <MoviesGridSkeleton count={12}/>}
 
         {movies && movies.length > 0 && <MovieGrid movies={movies} />}
 
