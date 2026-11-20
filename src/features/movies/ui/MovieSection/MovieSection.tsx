@@ -1,10 +1,9 @@
-import { Path } from "@/common/routing";
-import { Movie } from "../../api/moviesApi.types";
-import { Link } from "react-router";
-import s from "./MoviesSection.module.css";
-import { MovieCard } from "../MovieCard/MovieCard";
-import { Categories } from "../../lib";
 import { MoviesGridSkeleton } from "@/common/components/Skeleton/MovieCardSkeleton";
+import { Link } from "react-router";
+import { Movie } from "../../api/moviesApi.types";
+import { Categories } from "../../lib";
+import { MovieCard } from "../MovieCard/MovieCard";
+import s from "./MoviesSection.module.css";
 type Props = {
   title: string;
   category: Categories;
